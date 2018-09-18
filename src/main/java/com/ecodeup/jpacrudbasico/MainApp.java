@@ -1,8 +1,11 @@
 package com.ecodeup.jpacrudbasico;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.ecodeup.jpacrudbasico.model.Producto;
 
@@ -51,7 +54,15 @@ public class MainApp {
 					System.out.println(producto);
 					System.out.println();
 				} else {
-					System.out.println("Producto no encontrado...");
+					System.out.println();
+					System.out.println("Producto no encontrado... Lista de productos completa");
+					List<Producto> listaProductos= new ArrayList<>();
+					Query query=entity.createQuery("SELECT p FROM Producto p");
+					listaProductos=query.getResultList();
+					for (Producto p : listaProductos) {
+						System.out.println(p);
+					}
+					
 					System.out.println();
 				}
 
