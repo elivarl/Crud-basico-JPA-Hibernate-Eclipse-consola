@@ -20,7 +20,7 @@ public class MainApp {
 			System.out.println("1. Crear Producto");
 			System.out.println("2. Buscar Producto");
 			System.out.println("3. Actualizar Producto");
-			System.out.println("4. Elimnar Producto");
+			System.out.println("4. Eliminar Producto");
 			System.out.println("5. Salir");
 			System.out.println("Elija una opción:");
 
@@ -57,16 +57,16 @@ public class MainApp {
 
 				break;
 			case 3:
-				System.out.println("Digite el id del producto a actualizar:\n");
+				System.out.println("Digite el id del producto a actualizar:");
 				producto = new Producto();
 
 				producto = entity.find(Producto.class, scanner.nextLong());
 				if (producto != null) {
 					System.out.println(producto);
-					System.out.println("Digite el nombre del producto:\n");
+					System.out.println("Digite el nombre del producto:");
 					scanner.nextLine();
 					producto.setNombre(scanner.nextLine());
-					System.out.println("Digite el precio del producto:\n");
+					System.out.println("Digite el precio del producto:");
 					producto.setPrecio(scanner.nextDouble());
 					entity.getTransaction().begin();
 					entity.merge(producto);
@@ -79,7 +79,7 @@ public class MainApp {
 				}
 				break;
 			case 4:
-				System.out.println("Digite el id del producto a eliminar:\n");
+				System.out.println("Digite el id del producto a eliminar:");
 				producto = new Producto();
 
 				producto = entity.find(Producto.class, scanner.nextLong());
@@ -88,9 +88,9 @@ public class MainApp {
 					entity.getTransaction().begin();
 					entity.remove(producto);
 					entity.getTransaction().commit();
-					System.out.println("Producto eliminado\n");
+					System.out.println("Producto eliminado...");
 				} else {
-					System.out.println("Producto no encontrado\n");
+					System.out.println("Producto no encontrado...");
 				}
 				break;
 			case 5:entity.close();JPAUtil.shutdown();
